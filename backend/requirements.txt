@@ -1,0 +1,6 @@
+eng-spacysentiment
+Flask
+sklearn
+pandas
+numpy
+spacy
