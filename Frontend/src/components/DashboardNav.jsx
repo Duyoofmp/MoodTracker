@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Avatar from "../components/Avatar";
 import dashboard from "../assets/dashboard.svg";
-import chat from "../assets/chat.svg";
+import book from "../assets/book.svg"
 // import person from "../assets/person.svg";
 import logout from "../assets/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -105,7 +105,7 @@ const DashboardNav = () => {
 								>
 									<button onClick={chatClick}>
 										<div className="flex items-center">
-											<img src={chat} />
+											<img src={book} className="w-5 h-10" />
 											<p className="uppercase pl-2 ">Journal</p>
 										</div>
 									</button>
@@ -154,9 +154,9 @@ const DashboardNav = () => {
 								} `}
 								onClick={() => handleTab("chat")}
 							>
-								<button onClick={chatClick}>
+								<button onClick={chatClick} className="mr-8">
 									<div className="flex items-center">
-										<img src={chat} />
+										<img src={book} className="w-5 h-10" />
 										<p className="uppercase pl-2 ">Journal</p>
 									</div>
 								</button>
