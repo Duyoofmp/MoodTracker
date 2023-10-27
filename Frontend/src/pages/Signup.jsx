@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import googleLogo from "../assets/google.svg";
 import axios from "../api/axios";
 import { signup } from "../utils/auth";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+	const navigate = useNavigate();
 	const [form, setForm] = useState({
 		name: "",
 		email: "",
@@ -54,6 +57,7 @@ const Signup = () => {
 						success: true,
 					});
 					alert("account created successfully");
+					navigate("/login")
 				}
 			})
 			.catch((err) => console.log(err));
@@ -126,6 +130,11 @@ const Signup = () => {
 						Signup
 					</button>
 				</form>
+				<div className="mt-4 ">
+					<Link className="text-purple-400" to="/login">
+						Already have an account? Login
+					</Link>
+				</div>
 			</div>
 		</>
 	);

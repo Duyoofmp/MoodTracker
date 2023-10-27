@@ -1,71 +1,58 @@
-import  { useState } from "react";
-import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { Menu } from "lucide-react";
+import { Link, Outlet } from "react-router-dom";
+import Logo from "../assets/Logo.jpg";
 
-const menuItems = [
-	{
-		title: "Home",
-		path: "/",
-	},
-	{
-		title: "About",
-		path: "#",
-	},
-	{
-		title: "features",
-		path: "#",
-	},
-];
+export default function Navbar() {
+	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-const Navbar = () => {
-	const [isOpen, setIsOpen] = useState(false);
-
-	const toggleNav = () => {
-		setIsOpen(!isOpen);
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
 	};
 
 	return (
-		<nav className="flex justify-between gap-3 px-2 py-8 ">
-			<div className="md:px-32 -ml-6 sm:ml-0 px-10 font-Outfit font-bold text-black-700 text-xl cursor-pointer">
-				<NavLink to="/">LOGO</NavLink>
-			</div>
-			<ul className="hidden md:flex  px-20 gap-20 list-none">
-				{menuItems.map((navItem) => (
-					<li
-						className="font-Outfit font-regular text-xl   hover:text-indigo-400"
-						key={navItem.title}
-					>
-						<NavLink to={navItem.path}>{navItem.title}</NavLink>
-					</li>
-				))}
-			</ul>
-			<div className="md:hidden ml-auto  mr-2">
-				{!isOpen && <RxHamburgerMenu size={20} onClick={toggleNav} />}
-			</div>
-
-			{isOpen && (
-				<div className="md:hidden w-full -mt-8 py-5 px-5 z-50 shadow bg-white fixed right-0">
-					<div className="flex justify-end pr-2 pt-1">
-						<div onClick={toggleNav} className="-m-4">
-							{isOpen && <RxCross2 size={20} />}
-						</div>
+		<nav className="z-50 -mt-2">
+			<div className="w-full bg-white">
+				<div className="mx-auto flex max-w-7xl items-center justify-between px-4 -py-8  sm:px-6 lg:px-8">
+					<div className="inline-flex items-center ">
+						<img src={Logo} className="w-24" alt="logo" />
+						<Link to="/">
+							<span className="font-bold">Sentinental</span>
+						</Link>
 					</div>
-					<ul className="py-4 text-center">
-						{menuItems.map((navItem) => (
-							<li
-								className="font-Outfit font-regular text-xl hover:text-indigo-400"
-								key={navItem.title}
-							>
-								<NavLink to={navItem.path} onClick={toggleNav}>
-									{navItem.title}
-								</NavLink>
+					{/* <div className="hidden lg:block">
+						<ul className="ml-12 inline-flex space-x-8">
+							<li>
+								<Link
+									to="/"
+									className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+								>
+									Home
+								</Link>
 							</li>
-						))}
-					</ul>
+
+							<li>
+								<a
+									href="#how"
+									className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+								>
+									How to use
+								</a>
+							</li>
+						</ul>
+					</div> */}
+					<div className="ml-2 lg:hidden">
+						<Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+					</div>
+					{isMenuOpen && (
+						<div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
+							<div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+								<Outlet />
+							</div>
+						</div>
+					)}
 				</div>
-			)}
+			</div>
 		</nav>
 	);
-};
-
-export default Navbar;
+}
