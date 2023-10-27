@@ -47,7 +47,7 @@ Before you begin, make sure you have the following software and tools installed:
 3. Install the required dependencies for the backend:
 
    ```bash
-   cd backend
+   cd Server
    pip install -r requirements.txt
    ```
 
@@ -64,12 +64,12 @@ Before you begin, make sure you have the following software and tools installed:
 2. Start the React app:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
    This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Backend (Flask)
+### Backend 
 
 1. Open a new terminal and navigate to the `backend` directory:
 
@@ -77,13 +77,8 @@ Before you begin, make sure you have the following software and tools installed:
    cd backend
    ```
 
-2. Start the Flask app:
+2. Start the Flask for API.
 
-   ```bash
-   python app.py
-   ```
-
-   The Flask app will run on [http://localhost:5000](http://localhost:5000).
 
 ## Usage
 
