@@ -34,8 +34,8 @@ Before you begin, make sure you have the following software and tools installed:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/Duyoofmp/MoodTracker.git
-   cd MoodTracker
+   git clone https://github.com/Duyoofmp/SentiNental.git
+   cd SentiNental
    ```
 
 2. Install the required dependencies for the frontend:
