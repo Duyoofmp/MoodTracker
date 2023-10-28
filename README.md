@@ -1,6 +1,6 @@
-# MoodTracker App
+# Sentinental 
 
-MoodTracker is an application that allows users to track their daily moods. The app employs Natural Language Processing (NLP) to analyze the content of these entries, provides visual feedback on mood trends, and offers insights and suggestions based on detected mood patterns.
+Sentinental is an application that allows users to track their daily moods. The app employs Natural Language Processing (NLP) to analyze the content of these entries, provides visual feedback on mood trends, and offers insights and suggestions based on detected mood patterns.
 
 
 
@@ -33,8 +33,8 @@ Before you begin, make sure you have the following software and tools installed:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/Duyoofmp/MoodTracker.git
-   cd MoodTracker
+   git clone https://github.com/Duyoofmp/Sentinental.git
+   cd Sentinental
    ```
 
 2. Install the required dependencies for the frontend:
@@ -86,7 +86,7 @@ Before you begin, make sure you have the following software and tools installed:
 
   2.  Write or speak about your day's experiences in the app.
 
-  3. MoodTracker will analyze your entries and provide visual feedback on mood trends.
+  3. Sentinental will analyze your entries and provide visual feedback on mood trends.
 
   4. Receive insights and suggestions based on detected mood patterns.
 
