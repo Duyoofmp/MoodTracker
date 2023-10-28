@@ -85,14 +85,14 @@ const Journal = () => {
 	}, [isListening]);
 
 	return (
-		<>
-			<div className="flex justify-center mt-10 mx-auto bg-black h-[500px] rounded-md">
+		<div className="flex flex-col mx-auto">
+			<div className="flex justify-center mt-10  mx-auto bg-black h-[450px] rounded-md">
 				<form className="mt-5 flex flex-col px-5">
 					<label className="text-white my-3">Write about your day:</label>
 					<textarea
 						name="postContent"
-						rows={10}
-						cols={40}
+						rows={8}
+						cols={70}
 						value={postContent}
 						onChange={handleContentChange}
 						className="p-5"
@@ -117,7 +117,7 @@ const Journal = () => {
 					)}
 				</form>
 			</div>
-			<div className=" -ml-10 mt-5 sm:ml-10">
+			<div className="  -ml-10 mt-5 sm:ml-10">
 				{isChartVisible ? (
 					<ChartLayout
 						Happy={positive}
@@ -128,7 +128,7 @@ const Journal = () => {
 					<h1></h1>
 				)}
 			</div>
-		</>
+		</div>
 	);
 };
 

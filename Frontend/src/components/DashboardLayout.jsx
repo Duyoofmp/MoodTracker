@@ -6,17 +6,19 @@ import DashboardChartLayout from "./DashboardChartLayout";
 
 const DashboardLayout = () => {
 
-	const [array,setArray] = useState(null)
+	const [array, setArray] = useState(null)
+	const [weekArray, setWeekArray] = useState(null)
+	const [isWeeklyChecked,setIsWeeklyChecked] = useState(false)
 
 
-	const fetchData = async () => {
+	const fetchDailyData = async () => {
 		const userId = localStorage.getItem("userId");
 		try {
 			const {data} = await axios.get("/getDailyEmotion", {
-				params: { userId: userId ,Day:"yes"},
+				params: { userId: userId},
 			});
 
-			 setArray(data.DataArray);
+			setArray(data.DataArray);
 
 			
 		} catch (error) {
@@ -24,8 +26,31 @@ const DashboardLayout = () => {
 		}
 	};
 
+		const fetchWeeklyData = async () => {
+			const userId = localStorage.getItem("userId");
+			try {
+				const { data } = await axios.get("/getWeeklyEmotion", {
+					params: { userId: userId},
+				});
+
+				setWeekArray(data.DataArray);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		};
+
+	const handleWeeklyChange = (event) => {
+		setIsWeeklyChecked(!isWeeklyChecked);
+	};
+
+	console.log("daily" + array);
+	console.log("daily" + weekArray);
+
+	console.log(isWeeklyChecked)
+	
 	useEffect(() => {
-		fetchData();
+		fetchDailyData();
+		fetchWeeklyData();
 	}, []); 
 
 	return (
@@ -35,10 +60,38 @@ const DashboardLayout = () => {
 					<h2 className="text-3xl">Mood Analyser</h2>
 					<p className="text-gray-400">Analysis</p>
 				</div>
-			<NewJournal/>
+				<NewJournal />
+			</div>
+			<div className="mx-auto flex  mt-10">
+				<div className="mr-4">
+					<input
+						type="checkbox"
+						id="daily"
+						checked={!isWeeklyChecked}
+						onChange={handleWeeklyChange}
+					/>
+					<label className="px-1" htmlFor="daily">
+						Daily
+					</label>
+				</div>
+				<div>
+					<input
+						type="checkbox"
+						id="weekly"
+						checked={isWeeklyChecked}
+						onChange={handleWeeklyChange}
+					/>
+					<label className="px-1" htmlFor="weekly">
+						Weekly
+					</label>
+				</div>
 			</div>
 			<div className=" -ml-10 mt-5 sm:ml-10">
-				<DashboardChartLayout data={array}/>
+				{isWeeklyChecked ? (
+					<DashboardChartLayout data={weekArray} />
+				) : (
+					<DashboardChartLayout data={array} />
+				)}
 			</div>
 		</div>
 	);
