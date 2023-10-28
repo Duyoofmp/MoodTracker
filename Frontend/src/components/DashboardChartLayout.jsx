@@ -16,9 +16,9 @@ export default function DashboardChartLayout({ data }) {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Area type="monotone" dataKey="Sad" stroke="green" fill="red" fillOpacity={0.2} />
-      <Area type="monotone" dataKey="Neutral" stroke="red" fill="yellow" fillOpacity={0.2} />
-      <Area type="monotone" dataKey="Happy" stroke="yellow" fill="green" fillOpacity={0.2} />
+      <Area type="monotone" dataKey="Sad" stroke="red" fill="red" fillOpacity={0.2} />
+      <Area type="monotone" dataKey="Neutral" stroke="yellow" fill="yellow" fillOpacity={0.2} />
+      <Area type="monotone" dataKey="Happy" stroke="green" fill="green" fillOpacity={0.2} />
     </AreaChart>
   );
 }
