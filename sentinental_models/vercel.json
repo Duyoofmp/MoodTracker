@@ -1,0 +1,14 @@
+{
+    "builds":[
+        {
+            "src":"sentinental_models/app.py",
+            "use":"@vercel/python"
+        }
+    ],
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"sentinental_models/app.py"
+        }
+    ]
+}
