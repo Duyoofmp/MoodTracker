@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area, Legend } from "recharts";
 
-export default function DashboardChartLayout({data}) {
+export default function DashboardChartLayout({ data }) {
+  console.log(data)
   
   return (
     <AreaChart
