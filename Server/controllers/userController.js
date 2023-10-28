@@ -37,7 +37,7 @@ exports.login = BigPromise(async (req, res, next) => {
 	const isPasswordCorrect = await user.isValidatedPassword(password);
 
 	if (!isPasswordCorrect) {
-		return next(new CustomError("Email or password does not exist", 400));
+		return res.status(400).json({ error: "Email or password does not exist" });
 	}
 
 	cookieToken(user, res);

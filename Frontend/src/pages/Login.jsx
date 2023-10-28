@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import { authenticate, isAuthenticated } from "../utils/auth";
 import { UserContext } from "../context/UserContext.jsx";
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -17,9 +19,6 @@ const Login = () => {
 	const [values, setValues] = useState({
 		email: "",
 		password: "",
-		error: "",
-		loading: false,
-		didRedirect: false,
 	});
 
 	const handleChange = (e) => {
@@ -31,7 +30,7 @@ const Login = () => {
 
 	const formSubmit = async (event) => {
 		event.preventDefault();
-		const { email, password, error, loading, didRedirect } = values;
+		const { email, password } = values;
 		if (!email) {
 			alert("email required");
 			return;
@@ -60,7 +59,16 @@ const Login = () => {
 				navigate("/dashboard");
 			}
 		} catch (error) {
-			console.log(error);
+			if (error.response) {
+				if (error.response.status == 400) {
+					alert("invalid username or password")
+					setValues({
+						...values,
+						email: "",
+						password: "",
+					});
+				}
+			}
 		}
 	};
 	return (
@@ -70,7 +78,6 @@ const Login = () => {
 				<p className="text-gray-400 pt-5 text-center mx-5">
 					We've missed you! Please sign in to catch up on what you've missed
 				</p>
-
 
 				<form className="mt-5 ">
 					<div className="flex flex-col">
@@ -104,6 +111,11 @@ const Login = () => {
 						Login
 					</button>
 				</form>
+				<div className="mt-4 ">
+					<Link className="text-purple-400" to="/signup">
+						New here? Signup
+					</Link>
+				</div>
 			</div>
 		</>
 	);
