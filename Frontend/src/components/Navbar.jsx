@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu } from "lucide-react";
 import { Link, Outlet } from "react-router-dom";
-import Logo from "../assets/Logo.jpg";
+import Logo from "../assets/logo.png";
 
 export default function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
