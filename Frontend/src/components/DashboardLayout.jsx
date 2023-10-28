@@ -51,15 +51,15 @@ const DashboardLayout = () => {
 
 	return (
 		<div className="flex flex-col ">
-			<div className="flex justify-between overflow-x-hidden  w-full mt-10 pl-10">
+			<div className="flex justify-between overflow-x-hidden  w-full mt-5 pl-10">
 				<div className="flex flex-col gap-4  md:mt-5 sm:gap-14">
 					<h2 className="text-3xl">Mood Analyser</h2>
-					<p className="text-gray-400">Analysis</p>
+					<p className="text-gray-400 -mt-2">Analysis</p>
 				</div>
 				<NewJournal />
 			</div>
 			<div className="mx-auto flex  mt-10">
-				<div className="mr-4">
+				<div className="mr-4 -mt-6">
 					<input
 						type="checkbox"
 						id="daily"
@@ -70,7 +70,7 @@ const DashboardLayout = () => {
 						Daily
 					</label>
 				</div>
-				<div>
+				<div className="mb-6 -mt-6">
 					<input
 						type="checkbox"
 						id="weekly"
