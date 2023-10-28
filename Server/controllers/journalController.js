@@ -28,7 +28,7 @@ exports.addJournal = BigPromise(async (req, res, next) => {
 				anger: emotionsData.anger,
 				happiness: emotionsData.happiness,
 				love: emotionsData.love,
-				neutral: emotionsData.nuetral,
+				neutral: emotionsData.neutral,
 				saddness: emotionsData.saddness,
 			};
 			const trimmedUserId = userId.slice(1, -1);
