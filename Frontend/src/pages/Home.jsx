@@ -21,7 +21,7 @@ export default function Hero() {
 				<Loader /> // Display the loader during the delay
 			) : (
 				<div className="relative w-full">
-					<div className="relative isolate z-0 bg-white px-6 -mt-16 pt-14 lg:px-8">
+					<div className="relative isolate z-0 bg-white px-6 -mt-2 pt-14 lg:px-8">
 						<div className="relative mx-auto max-w-2xl py-24">
 							<div className="absolute inset-x-0 -top-[4rem] -z-10 transform-gpu overflow-hidden blur-3xl md:-top-[10rem]">
 								<svg
