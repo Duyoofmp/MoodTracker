@@ -39,10 +39,11 @@ const DashboardLayout = () => {
 			}
 		};
 
-	const handleWeeklyChange = (event) => {
+	const handleWeeklyChange = () => {
 		setIsWeeklyChecked(!isWeeklyChecked);
 	};
 
+	
 	
 	useEffect(() => {
 		fetchDailyData();

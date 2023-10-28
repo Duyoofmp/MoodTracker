@@ -19,23 +19,37 @@ export default function DashboardChartLayout({ data }) {
 				<Legend />
 				<Area
 					type="monotone"
-					dataKey="Sad"
+					dataKey="anger"
 					stroke="red"
 					fill="red"
 					fillOpacity={0.2}
 				/>
 				<Area
 					type="monotone"
-					dataKey="Neutral"
-					stroke="yellow"
-					fill="yellow"
+					dataKey="happiness"
+					stroke="green"
+					fill="green"
 					fillOpacity={0.2}
 				/>
 				<Area
 					type="monotone"
-					dataKey="Happy"
-					stroke="green"
-					fill="green"
+					dataKey="love"
+					stroke="blue"
+					fill="blue"
+					fillOpacity={0.2}
+				/>
+				<Area
+					type="monotone"
+					dataKey="neutral"
+					stroke="violet"
+					fill="violet"
+					fillOpacity={0.2}
+				/>
+				<Area
+					type="monotone"
+					dataKey="saddness"
+					stroke="black"
+					fill="black"
 					fillOpacity={0.2}
 				/>
 			</AreaChart>

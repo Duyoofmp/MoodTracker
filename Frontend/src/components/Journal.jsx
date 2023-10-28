@@ -6,9 +6,12 @@ const Journal = () => {
 	const [postContent, setPostContent] = useState("");
 	const [isListening, setIsListening] = useState(false);
 	const [isChartVisible, setIsChartVisible] = useState(false);
-	const [positive, setPositive] = useState(0);
-	const [negative, setNegative] = useState(0);
+	const [anger, setAnger] = useState(0);
+	const [happiness, setHappiness] = useState(0);
+	const [love, setLove] = useState(0);
 	const [neutral, setNeutral] = useState(0);
+	const [saddness, setSaddness] = useState(0);
+
 
 	const isChromeBrowser = /Chrome/.test(navigator.userAgent); // Check if the browser is Chrome
 
@@ -68,9 +71,12 @@ const Journal = () => {
 				userId: userId,
 			});
 			setIsChartVisible(true);
-			setPositive(data.journalEntry.entries.emotions.Happy);
-			setNegative(data.journalEntry.entries.emotions.Sad);
-			setNeutral(data.journalEntry.entries.emotions.Neutral);
+			setAnger(data.journalEntry.entries.emotions.anger);
+			setHappiness(data.journalEntry.entries.emotions.happiness);
+			setLove(data.journalEntry.entries.emotions.love);
+			setNeutral(data.journalEntry.entries.emotions.neutral);
+			setSaddness(data.journalEntry.entries.emotions.saddness);
+
 		} catch (error) {
 			console.error("Error:", error);
 		}
@@ -120,9 +126,11 @@ const Journal = () => {
 			<div className="  -ml-10 mt-5 sm:ml-10">
 				{isChartVisible ? (
 					<ChartLayout
-						Happy={positive}
-						Sad={negative}
-						Neutral={neutral}
+						anger={anger}
+						happiness={happiness}
+						love={love}
+						neutral={neutral}
+						saddness={saddness}
 					/>
 				) : (
 					<h1></h1>
