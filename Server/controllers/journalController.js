@@ -66,7 +66,40 @@ exports.getSumOfEmotionsForDay = async (req, res, next) => {
 
 		const dataArray = [];
 
-		if (req.query.Day === "no") {
+		
+			const trimmedUserId = userId.slice(1, -1);
+			const documents = await Journal.find({
+				date: currentDate,
+				user: trimmedUserId,
+			});
+
+			documents.forEach((docs) => {
+				dataArray.push(docs.entries.emotions);
+			});
+
+		res.status(200).json({
+			DataArray: dataArray,
+		});
+	} catch (error) {
+		console.error("Error:", error);
+		return next(new CustomError("Failed to calculate emotion sums for the specified date and user", 500));
+	}
+};
+
+
+exports.getSumOfEmotionsForWeek = async (req, res, next) => { 
+	const userId = req.query.userId;
+
+	try {
+		const currentDate = moment().format("DD/MM/YYYY");
+
+		if (!userId) {
+			return next(new CustomError("Please provide a valid user ID", 400));
+		}
+
+		const dataArray = [];
+
+		
 			const trimmedUserId = userId.slice(1, -1);
 			const sevenDaysAgo = moment().subtract(7, "days").format("DD/MM/YYYY");
 
@@ -81,23 +114,18 @@ exports.getSumOfEmotionsForDay = async (req, res, next) => {
 			documents.forEach((docs) => {
 				dataArray.push(docs.entries.emotions);
 			});
-		} else {
-			const trimmedUserId = userId.slice(1, -1);
-			const documents = await Journal.find({
-				date: currentDate,
-				user: trimmedUserId,
-			});
-
-			documents.forEach((docs) => {
-				dataArray.push(docs.entries.emotions);
-			});
-		}
 
 		res.status(200).json({
 			DataArray: dataArray,
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		return next(new CustomError("Failed to calculate emotion sums for the specified date and user", 500));
+		return next(
+			new CustomError(
+				"Failed to calculate emotion sums for the specified date and user",
+				500
+			)
+		);
 	}
-};
+
+}
