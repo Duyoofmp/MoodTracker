@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area, Legend } from "recharts";
 
-export default function DashboardChartLayout() {
-  const [data, setData] = useState([
-    { Happy: 0.423, Sad: 0.698, Neutral: 0 },
-    { Happy: 0.256, Sad: 0.549, Neutral: 0.65 },
-    {  Happy: 0.256, Sad: 0.549, Neutral: 0.145 },
-  ]);
-
+export default function DashboardChartLayout({data}) {
+  
   return (
     <AreaChart
       width={1000}
@@ -20,9 +15,9 @@ export default function DashboardChartLayout() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Area type="monotone" dataKey="Happy" stroke="green" fill="green" fillOpacity={0.2} />
-      <Area type="monotone" dataKey="Sad" stroke="red" fill="red" fillOpacity={0.2} />
-      <Area type="monotone" dataKey="Neutral" stroke="yellow" fill="yellow" fillOpacity={0.2} />
+      <Area type="monotone" dataKey="Sad" stroke="green" fill="red" fillOpacity={0.2} />
+      <Area type="monotone" dataKey="Neutral" stroke="red" fill="yellow" fillOpacity={0.2} />
+      <Area type="monotone" dataKey="Happy" stroke="yellow" fill="green" fillOpacity={0.2} />
     </AreaChart>
   );
 }

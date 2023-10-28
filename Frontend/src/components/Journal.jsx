@@ -68,9 +68,9 @@ const Journal = () => {
 				userId: userId,
 			});
 			setIsChartVisible(true);
-			setPositive(data.journalEntry.entries.emotions.positive);
-			setNegative(data.journalEntry.entries.emotions.negative);
-			setNeutral(data.journalEntry.entries.emotions.neutral);
+			setPositive(data.journalEntry.entries.emotions.Happy);
+			setNegative(data.journalEntry.entries.emotions.Sad);
+			setNeutral(data.journalEntry.entries.emotions.Neutral);
 		} catch (error) {
 			console.error("Error:", error);
 		}
@@ -120,9 +120,9 @@ const Journal = () => {
 			<div className=" -ml-10 mt-5 sm:ml-10">
 				{isChartVisible ? (
 					<ChartLayout
-						positive={positive}
-						negative={negative}
-						neutral={neutral}
+						Happy={positive}
+						Sad={negative}
+						Neutral={neutral}
 					/>
 				) : (
 					<h1></h1>

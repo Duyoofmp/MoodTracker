@@ -1,26 +1,22 @@
 import { useEffect,useState } from "react";
-import ChartLayout from "./ChartLayout";
 import NewJournal from "./NewJournal";
 import axios from "../api/axios";
+import DashboardChartLayout from "./DashboardChartLayout";
 
 
 const DashboardLayout = () => {
 
-	const [positive,setPositive] = useState(0)
-	const [negative, setNegative] = useState(0);
-	const [neutral, setNeutral] = useState(0);
+	const [array,setArray] = useState(null)
 
 
 	const fetchData = async () => {
 		const userId = localStorage.getItem("userId");
 		try {
-			const { data } = await axios.get("/getDailyEmotion", {
-				params: { userId: userId },
+			const {data} = await axios.get("/getDailyEmotion", {
+				params: { userId: userId ,Day:"yes"},
 			});
-			setPositive(data.sumPositive);
-			setNegative(data.sumNegative);
-			setNeutral(data.sumNeutral);
-			console.log(positive,negative,neutral)
+
+			 setArray(data.DataArray);
 
 			
 		} catch (error) {
@@ -42,7 +38,7 @@ const DashboardLayout = () => {
 			<NewJournal/>
 			</div>
 			<div className=" -ml-10 mt-5 sm:ml-10">
-				<ChartLayout positive={positive} negative={negative} neutral={neutral} />
+				<DashboardChartLayout data={array}/>
 			</div>
 		</div>
 	);

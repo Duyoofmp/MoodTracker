@@ -18,15 +18,15 @@ const journalSchema = new mongoose.Schema(
 					required: true,
 				},
 				emotions: {
-					negative: {
+					Sad: {
 						type: Number,
 						required: true,
 					},
-					neutral: {
+					Neutral: {
 						type: Number,
 						required: true,
 					},
-					positive: {
+					Happy: {
 						type: Number,
 						required: true,
 					},
