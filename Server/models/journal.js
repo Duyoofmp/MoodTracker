@@ -11,27 +11,34 @@ const journalSchema = new mongoose.Schema(
 			ref: "User",
 			required: true,
 		},
-		entries:
-			{
-				feedback: {
-					type: String,
+		entries: {
+			feedback: {
+				type: String,
+				required: true,
+			},
+			emotions: {
+				anger: {
+					type: Number,
 					required: true,
 				},
-				emotions: {
-					Sad: {
-						type: Number,
-						required: true,
-					},
-					Neutral: {
-						type: Number,
-						required: true,
-					},
-					Happy: {
-						type: Number,
-						required: true,
-					},
+				happiness: {
+					type: Number,
+					required: true,
+				},
+				love: {
+					type: Number,
+					required: true,
+				},
+				neutral: {
+					type: Number,
+					required: true,
+				},
+				saddness: {
+					type: Number,
+					required: true,
 				},
 			},
+		},
 	},
 	{ timestamps: true }
 );

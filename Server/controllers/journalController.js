@@ -21,17 +21,17 @@ exports.addJournal = BigPromise(async (req, res, next) => {
 		redirect: "follow",
 	};
 
-	fetch("http://haleel.pythonanywhere.com/test", requestOptions)
+	fetch("https://sentinal.onrender.com/test", requestOptions)
 		.then((response) => response.json())
 		.then(async (emotionsData) => {
-
 			const emotions = {
-				Sad: emotionsData.negative,
-				Neutral: emotionsData.neutral,
-				Happy: emotionsData.positive,
+				anger: emotionsData.anger,
+				happiness: emotionsData.happiness,
+				love: emotionsData.love,
+				neutral: emotionsData.nuetral,
+				saddness: emotionsData.saddness,
 			};
 			const trimmedUserId = userId.slice(1, -1);
-			
 
 			const journalEntry = await Journal.create({
 				date: currentDate,
@@ -41,7 +41,6 @@ exports.addJournal = BigPromise(async (req, res, next) => {
 					emotions,
 				},
 			});
-			
 
 			res.status(201).json({
 				success: true,
