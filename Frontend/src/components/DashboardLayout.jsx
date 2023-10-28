@@ -43,10 +43,6 @@ const DashboardLayout = () => {
 		setIsWeeklyChecked(!isWeeklyChecked);
 	};
 
-	console.log("daily" + array);
-	console.log("daily" + weekArray);
-
-	console.log(isWeeklyChecked)
 	
 	useEffect(() => {
 		fetchDailyData();
